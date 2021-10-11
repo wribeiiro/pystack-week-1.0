@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+Cadastro
+
+{% endblock%}
+
+{% block 'body' %}
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			{% if status and status != '0' %}
+			<br>
+			<div class="alert alert-danger" role="alert">
+				{% if status == '1'%}
+					Sua senha deve ter entre 8 e 14 caracteres
+				{% endif %}
+				{% if status == '2'%}
+					Preencha todos os campos
+				{% endif %}
+				{% if status == '3'%}
+					Usuário já existe
+				{% endif %}
+			</div>
+			{% endif %}
+			{% if status == '0'%}
+			<br>
+			<div class="alert alert-success" role="alert">
+				Usuário cadastrado com sucesso
+			</div>
+			{%endif%}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 offset-3">
+			<br>
+			<h1>Cadastre-se</h1>
+			<hr>
+			<form method="POST" action="{% url 'valida_cadastro'%}">{% csrf_token %}
+				<label>Digite seu nome:</label>
+				<input class="form-control form-control-sm" type="text" placeholder="Nome" name="nome">
+				<br>
+				<label>Digite seu Email:</label>
+				<input class="form-control form-control-sm" type="text" placeholder="E-mail" name="email">
+				<br>
+				<label>Digite seu senha:</label>
+				<input class="form-control form-control-sm" type="password" placeholder="Senha" name="senha">
+				<br>
+				<input class="btn btn-success btn-lg btn-sm" type="submit" value="Salvar">
+				<a href="{% url 'login'%}" class="btn btn-info btn-lg btn-sm">Logar</a>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

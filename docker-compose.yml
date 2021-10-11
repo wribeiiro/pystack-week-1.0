@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: plataforma_cursos
+    env_file: .env
+    volumes:
+      - "./src/:/plataforma_cursos"
+    ports:
+      - "8001:8001"
+    networks:
+      - default
+        
