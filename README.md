@@ -11,6 +11,10 @@
 cd ~/your/path/
 git clone https://github.com/wribeiiro/pystack-week-1.0
 ````
+#### Set .env
+```bash
+rename .env-example to .env
+````
 
 #### Go to the path of app
 ```bash
